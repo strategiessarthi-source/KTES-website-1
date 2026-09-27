@@ -213,6 +213,12 @@ function getBodyMemberImage(nameEn: string, staticImg?: string | null): string |
 
 const PAST_PRESIDENTS = [
   {
+    id: 'p7',
+    nameEn: 'Late Vishnu (Dadasaheb) Pathak',
+    nameMr: 'कै. विष्णू (दादासाहेब) पाठक',
+    image: vishnuPathakImg
+  },
+  {
     id: 'p1',
     nameEn: 'Late Dhanraj Katare',
     nameMr: 'कै. धनराज कटारे',
@@ -247,12 +253,6 @@ const PAST_PRESIDENTS = [
     nameEn: 'Late Raghunath Joshi',
     nameMr: 'कै. रघुनाथ जोशी',
     image: raghunathJoshiImg
-  },
-  {
-    id: 'p7',
-    nameEn: 'Late Vishnu (Dadasaheb) Pathak',
-    nameMr: 'कै. विष्णू (दादासाहेब) पाठक',
-    image: vishnuPathakImg
   }
 ];
 
