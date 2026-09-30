@@ -1,23 +1,33 @@
 import { Megaphone } from 'lucide-react';
 
 export default function NewsTicker() {
-  const englishText = "New English Medium School (CBSE Affiliated) opening soon!";
-  const marathiText = "न्यू इंग्लिश मिडीयम स्कूल (सी.बी.एस.ई. संलग्न) लवकरच सुरू होत आहे!";
+  const newsItems = [
+    {
+      englishText: "New English Medium School (CBSE Affiliated) opening soon!",
+      marathiText: "न्यू इंग्लिश मिडीयम स्कूल (सी.बी.एस.ई. संलग्न) लवकरच सुरू होत आहे!",
+    },
+    {
+      englishText: "'Alumni Association - Member Registration' is now live; check the Students Portal Page to register!",
+      marathiText: "'माजी विद्यार्थी संघ - सभासद नोंदणी' सुरू झाली असून, विद्यार्थी पोर्टल पेजवर (Students Portal Page) लिंक उपलब्ध आहे!",
+    },
+  ];
 
   const renderNewsSegment = (prefix: string) => (
     <div className="flex items-center space-x-6">
-      {[1, 2, 3].map((idx) => (
-        <div key={`${prefix}-${idx}`} className="flex items-center space-x-4">
-          <span className="text-amber-300 font-semibold tracking-wide">
-            {englishText}
-          </span>
-          <span className="text-red-400/80 font-bold text-xs">|</span>
-          <span className="text-amber-200 font-medium font-sans">
-            {marathiText}
-          </span>
-          <span className="text-red-400/70 font-bold text-xs pl-2">✦</span>
-        </div>
-      ))}
+      {[1, 2].map((loopIdx) =>
+        newsItems.map((item, itemIdx) => (
+          <div key={`${prefix}-${loopIdx}-${itemIdx}`} className="flex items-center space-x-4">
+            <span className="text-amber-300 font-semibold tracking-wide">
+              {item.englishText}
+            </span>
+            <span className="text-red-400/80 font-bold text-xs">|</span>
+            <span className="text-amber-200 font-medium font-sans">
+              {item.marathiText}
+            </span>
+            <span className="text-red-400/70 font-bold text-xs pl-2">✦</span>
+          </div>
+        ))
+      )}
     </div>
   );
 

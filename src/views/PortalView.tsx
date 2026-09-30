@@ -7,17 +7,17 @@ import {
   Bell,
   CheckCircle2,
   GraduationCap,
-  Library,
+  Users,
   ExternalLink,
   Layers,
-  FileCheck,
-  Compass,
-  ArrowRight
+  Target,
+  Award
 } from 'lucide-react';
 
 export default function PortalView() {
   const [notifyEmail, setNotifyEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
+  const [alumniLang, setAlumniLang] = useState<'both' | 'mr' | 'en'>('both');
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
@@ -200,6 +200,214 @@ export default function PortalView() {
                   <p className="text-slate-400 text-[11px] leading-relaxed pt-1">{item.descEn}</p>
                 </div>
               ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 2B. Alumni Association Member Registration Section */}
+      <section
+        id="alumni-registration-section"
+        className="bg-gradient-to-br from-[#000d2b]/90 via-[#031538]/85 to-[#020b1f]/95 border-2 border-amber-400/40 rounded-3xl p-8 sm:p-12 shadow-2xl relative overflow-hidden backdrop-blur-xl"
+      >
+        {/* Ambient Glow Effects */}
+        <div className="absolute -top-24 -left-24 w-96 h-96 bg-amber-400/10 rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="relative z-10 max-w-5xl mx-auto space-y-8">
+          {/* Header & Language Switcher */}
+          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 border-b border-white/15 pb-7">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-5">
+              <div className="h-16 w-16 sm:h-20 sm:w-20 rounded-2xl bg-amber-400/15 border border-amber-400/40 flex items-center justify-center shrink-0 shadow-lg shadow-amber-400/10">
+                <Users className="h-9 w-9 sm:h-11 sm:w-11 text-amber-400" />
+              </div>
+              <div className="space-y-1.5">
+                <div className="inline-flex items-center gap-2 bg-amber-400/20 text-amber-300 border border-amber-400/40 text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                  <Sparkles className="h-3.5 w-3.5 text-amber-400" />
+                  <span>Official Alumni Network • Registration Open</span>
+                </div>
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-display font-black text-white leading-snug">
+                  माजी विद्यार्थी संघ - सभासद नोंदणी{' '}
+                  <span className="text-amber-400 block sm:inline">
+                    | Alumni Association Member Registration
+                  </span>
+                </h2>
+              </div>
+            </div>
+
+            {/* Language Toggle */}
+            <div className="flex items-center gap-1.5 bg-white/5 p-1.5 rounded-2xl border border-white/10 self-start lg:self-center shrink-0">
+              {(['both', 'mr', 'en'] as const).map((lang) => (
+                <button
+                  key={lang}
+                  type="button"
+                  onClick={() => setAlumniLang(lang)}
+                  className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                    alumniLang === lang
+                      ? 'bg-amber-400 text-slate-950 shadow-md font-black'
+                      : 'text-slate-300 hover:text-white hover:bg-white/5'
+                  }`}
+                >
+                  {lang === 'both' && 'मराठी & English'}
+                  {lang === 'mr' && 'मराठी'}
+                  {lang === 'en' && 'English'}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Bilingual Content Grid */}
+          <div
+            className={`grid grid-cols-1 ${
+              alumniLang === 'both' ? 'lg:grid-cols-2' : ''
+            } gap-8 items-stretch`}
+          >
+            {/* Marathi Content Card */}
+            {(alumniLang === 'both' || alumniLang === 'mr') && (
+              <div className="bg-white/5 border border-white/15 rounded-2xl p-6 sm:p-8 space-y-5 hover:border-amber-400/40 transition-all flex flex-col justify-between">
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between border-b border-white/10 pb-3">
+                    <span className="text-amber-400 font-bold text-xs uppercase tracking-wider flex items-center gap-1.5">
+                      <Award className="h-4 w-4" />
+                      मराठी निवेदन
+                    </span>
+                    <span className="text-[11px] bg-amber-400/15 text-amber-300 border border-amber-400/30 px-2.5 py-0.5 rounded-full font-semibold">
+                      सदस्य नोंदणी सुरू
+                    </span>
+                  </div>
+
+                  <h3 className="text-lg sm:text-xl font-display font-bold text-amber-300">
+                    सस्नेह नमस्कार !
+                  </h3>
+
+                  <div className="space-y-3.5 text-slate-200 text-xs sm:text-sm leading-relaxed font-sans">
+                    <p>
+                      सन १९३८ मध्ये स्थापन झालेली व शैक्षणिक क्षेत्रात स्वतःच्या कार्यकर्तृत्वाचा ठसा उमटविणारी, खेड तालुका एज्युकेशन सोसायटी राजगुरुनगर (खेड) पुणे शतकपूर्तीकडे वाटचाल करीत आहे. संस्थेचे &apos;महात्मा गांधी विद्यालय आणि कनिष्ठ महाविद्यालय&apos; हे हजारो विद्यार्थ्यांच्या जीवनाला आकार देणारे संस्कार केंद्र बनले असून विद्यालय ज्ञानदानाचे पवित्र काम अविरतपणे करीत आहे.
+                    </p>
+                    <p>
+                      माजी विद्यार्थ्यांनी विद्यालयाच्या पवित्र प्रांगणातील ते सोनेरी क्षण, वर्गातील तो निरागस कल्ला, शिक्षकांची ती मायेची थाप, या सर्व आठवणी आजवर आपण मनाच्या कप्प्यात जपून ठेवलेल्या आहेत.
+                    </p>
+                    <p>
+                      आज माजी विद्यार्थी विविध क्षेत्रांत यशाची शिखरे पादाक्रांत करत आहेत, याचा संस्थेला व शाळेला सार्थ अभिमान आहे. ज्या भूमीत आपण संस्कारित झालो, आपण लहानाचे मोठे झालो, त्या विद्यालयाशी घट्ट नाते जोडण्याची वेळ आली आहे. संस्था व विद्यालयाशी असलेला हा ऋणानुबंध कायमस्वरूपी जपण्यासाठी संस्थेने माजी विद्यार्थी संघ स्थापन करण्याचा मनोदय केलेला असून &apos;माजी विद्यार्थी संघाची&apos; सदस्य नोंदणी सुरू करीत आहोत.
+                    </p>
+                  </div>
+
+                  {/* Marathi Objectives */}
+                  <div className="bg-slate-950/60 border border-amber-400/25 rounded-xl p-5 space-y-3 mt-2">
+                    <h4 className="text-sm sm:text-base font-bold text-amber-300 flex items-center gap-2">
+                      <Target className="h-4 w-4 text-amber-400 shrink-0" />
+                      <span>माजी विद्यार्थी संघ उद्देश:</span>
+                    </h4>
+                    <ul className="space-y-2.5 text-xs sm:text-sm text-slate-200">
+                      <li className="flex items-start gap-2.5">
+                        <CheckCircle2 className="h-4 w-4 text-amber-400 shrink-0 mt-0.5" />
+                        <span>माजी विद्यार्थ्यांना निमंत्रित करून त्यांचा यथोचित सन्मान करणे व एका सामायिक व्यासपीठावर एकत्र आणणे.</span>
+                      </li>
+                      <li className="flex items-start gap-2.5">
+                        <CheckCircle2 className="h-4 w-4 text-amber-400 shrink-0 mt-0.5" />
+                        <span>आजी-माजी विद्यार्थी यांच्यातील संवादाचा पूल दृढ करणे.</span>
+                      </li>
+                      <li className="flex items-start gap-2.5">
+                        <CheckCircle2 className="h-4 w-4 text-amber-400 shrink-0 mt-0.5" />
+                        <span>विद्यार्थ्यांच्या सर्वांगीण विकासात मोलाचे योगदान देणे.</span>
+                      </li>
+                      <li className="flex items-start gap-2.5">
+                        <CheckCircle2 className="h-4 w-4 text-amber-400 shrink-0 mt-0.5" />
+                        <span>सामाजिक, शैक्षणिक, औद्योगिक यासारख्या विविध क्षेत्रांतील यशस्वी माजी विद्यार्थ्याचे मार्गदर्शन आजच्या (५ वी ते १२ वी पर्यंतच्या) पिढीला उपलब्ध करून देणे.</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* English Content Card */}
+            {(alumniLang === 'both' || alumniLang === 'en') && (
+              <div className="bg-white/5 border border-white/15 rounded-2xl p-6 sm:p-8 space-y-5 hover:border-amber-400/40 transition-all flex flex-col justify-between">
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between border-b border-white/10 pb-3">
+                    <span className="text-amber-400 font-bold text-xs uppercase tracking-wider flex items-center gap-1.5">
+                      <Award className="h-4 w-4" />
+                      English Appeal
+                    </span>
+                    <span className="text-[11px] bg-amber-400/15 text-amber-300 border border-amber-400/30 px-2.5 py-0.5 rounded-full font-mono">
+                      Registration Active
+                    </span>
+                  </div>
+
+                  <h3 className="text-lg sm:text-xl font-display font-bold text-amber-300">
+                    Warm Greetings!
+                  </h3>
+
+                  <div className="space-y-3.5 text-slate-200 text-xs sm:text-sm leading-relaxed">
+                    <p>
+                      Established in 1938, Khed Taluka Education Society, Rajgurunagar (Khed), Pune, has left an indelible mark on the educational landscape and is steadily marching towards its centenary. The society’s &apos;Mahatma Gandhi Vidyalaya and Junior College&apos; has served as a sacred center of values and learning, shaping the lives of thousands of students and continuing its noble mission of imparting knowledge.
+                    </p>
+                    <p>
+                      As former students, you have safely tucked away in the corners of your hearts those golden moments spent in the sacred courtyards of the school, the innocent chatter in the classrooms, and the affectionate pat of your teachers.
+                    </p>
+                    <p>
+                      Today, as alumni scaling the peaks of success across various fields, the institution and the school take immense pride in your achievements. The time has come to forge an even stronger bond with the very soil that nurtured and shaped you. To permanently cherish this enduring connection between the institution and its alumni, we are proud to establish the Alumni Association and officially commence member registration.
+                    </p>
+                  </div>
+
+                  {/* English Objectives */}
+                  <div className="bg-slate-950/60 border border-amber-400/25 rounded-xl p-5 space-y-3 mt-2">
+                    <h4 className="text-sm sm:text-base font-bold text-amber-300 flex items-center gap-2">
+                      <Target className="h-4 w-4 text-amber-400 shrink-0" />
+                      <span>Objectives of the Alumni Association:</span>
+                    </h4>
+                    <ul className="space-y-2.5 text-xs sm:text-sm text-slate-200">
+                      <li className="flex items-start gap-2.5">
+                        <CheckCircle2 className="h-4 w-4 text-amber-400 shrink-0 mt-0.5" />
+                        <span>To invite alumni, honor them suitably, and bring them together on a common platform.</span>
+                      </li>
+                      <li className="flex items-start gap-2.5">
+                        <CheckCircle2 className="h-4 w-4 text-amber-400 shrink-0 mt-0.5" />
+                        <span>To strengthen the bridge of communication between current and former students.</span>
+                      </li>
+                      <li className="flex items-start gap-2.5">
+                        <CheckCircle2 className="h-4 w-4 text-amber-400 shrink-0 mt-0.5" />
+                        <span>To contribute significantly to the holistic development of students.</span>
+                      </li>
+                      <li className="flex items-start gap-2.5">
+                        <CheckCircle2 className="h-4 w-4 text-amber-400 shrink-0 mt-0.5" />
+                        <span>To provide guidance from successful alumni across diverse fields such as social, educational, and industrial sectors to the current generation of students (from 5th to 12th standard).</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* CTA & Sign-off Footer Block */}
+          <div className="bg-slate-950/75 border border-amber-400/35 rounded-2xl p-6 sm:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-xl">
+            {/* Sign-off */}
+            <div className="space-y-1 text-left">
+              <p className="text-xs sm:text-sm text-slate-300 font-medium">
+                आपले नम्र / Warm regards,
+              </p>
+              <p className="text-base sm:text-lg font-display font-black text-amber-300">
+                प्राचार्या / Principal
+              </p>
+              <p className="text-xs sm:text-sm text-white font-semibold">
+                महात्मा गांधी विद्यालय व कनिष्ठ महाविद्यालय, राजगुरुनगर.
+              </p>
+            </div>
+
+            {/* Prominent CTA Button */}
+            <div className="w-full md:w-auto shrink-0">
+              <a
+                id="alumni-register-cta-btn"
+                href="https://forms.gle/QmcyaFAWdZkZBway8"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full md:w-auto inline-flex items-center justify-center gap-3 bg-gradient-to-r from-amber-400 via-amber-500 to-amber-400 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-display font-black text-sm sm:text-base px-8 py-4 rounded-2xl shadow-xl shadow-amber-500/20 hover:shadow-amber-400/40 hover:scale-[1.02] active:scale-[0.99] transition-all cursor-pointer"
+              >
+                <span>Register Now / नोंदणी करा</span>
+                <ExternalLink className="h-4 w-4 stroke-[2.5]" />
+              </a>
             </div>
           </div>
         </div>
